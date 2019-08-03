@@ -1,0 +1,38 @@
+AWS User/Pass:
+mgbaws@gmail.com
+afe4iw7y3kjhmvnsdf!!
+
+To gen SSH key:
+ssh-keygen
+cp ~/.ssh/id_rsa.pub /Volumes/STORAGE\ 3TB/Wyzant/repos/sarah_m/ssh_keys 
+
+
+To Connect:
+(in sarah_m folder:)
+
+cd (drag folder into terminal)
+
+#allows us to ssh into virtual machine
+#allows access into jupyter lab
+ssh -i "ssh_keys/keypair.pem" -L localhost:8888:localhost:8888 ubuntu@ec2-3-90-9-64.compute-1.amazonaws.com
+source activate tensorflow_p36
+jupyter lab 
+      
+creates kaggle folder for json key      
+mkdir -p ~/.kaggle
+
+upload option in jupyter lab
+#upload json:
+
+copies json to folder 
+cp kaggle.json ~/.kaggle/
+
+changes permissions 
+chmod 600 ~/.kaggle/kaggle.json
+
+
+run inside notebook to expand contents: 
+import zipfile
+zip_ref = zipfile.ZipFile(path_to_zip_file, 'r')
+zip_ref.extractall(directory_to_extract_to)
+zip_ref.close()
